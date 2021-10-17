@@ -4,16 +4,16 @@ import Observable from '@h3r/observable'
 
 export default class WRTC extends Observable 
 {
-    debug = 3; //0 none 1 errors 2 errors & warnings 3 all logs
-    peer = null;
-    peers = [];
-    static #instance = null;
+    //debug = 3; //0 none 1 errors 2 errors & warnings 3 all logs
+    //peer = null;
+    //peers = [];
+    //static #instance = null;
     
     constructor(){
-        if(WRTC.instance) return WRTC.instance;
+        if(WRTC.#instance) return WRTC.#instance;
         
         super();
-        WRTC.instance = this;
+        WRTC.#instance = this;
         if (util?.supports.data) { /* OK to start a data connection. */ }
         //else { debugger; /* Browser will not support data connection. */ }
 
@@ -44,7 +44,8 @@ export default class WRTC extends Observable
     }
 
     async init(UUID = "WRTC", options = {}){
-        this.debug = options.debug ?? 3;
+        this.peers = [];
+        this.debug = options.debug ?? 3;//0 none 1 errors 2 errors & warnings 3 all logs
         this.metadata = { UUID, ...options.metadata??{} };
         this.peer = await this.createPeer(cookies.get('jsnet_peer_id'), {...options});
         
