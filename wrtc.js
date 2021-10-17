@@ -10,10 +10,10 @@ export default class WRTC extends Observable
     //static #instance = null;
     
     constructor(){
-        if(WRTC.#instance) return WRTC.#instance;
+        if(WRTC.instance) return WRTC.instance;
         
         super();
-        WRTC.#instance = this;
+        WRTC.instance = this;
         if (util?.supports.data) { /* OK to start a data connection. */ }
         //else { debugger; /* Browser will not support data connection. */ }
 
