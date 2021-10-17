@@ -24,11 +24,11 @@ export default class WRTC extends Observable
     }
 
     destructor(){
-        this.peer?.destroy();
-        this.peers?.length = 0;
-        this.options = {};
-        this.metadata = {};
-        this = null;
+        //this.peer?.destroy();
+        //this.peers?.length = 0;
+        //this.options = {};
+        //this.metadata = {};
+        //this = null;
     }
 
     isServerConnected(){
