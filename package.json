@@ -1,0 +1,23 @@
+{
+  "name": "@h3r/wrtc",
+  "version": "1.0.0",
+  "description": "",
+  "main": "wrtc.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/h3r/wrtc.git"
+  },
+  "keywords": [
+    "js",
+    "wrtc"
+  ],
+  "author": "h3R",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/h3r/wrtc/issues"
+  },
+  "homepage": "https://github.com/h3r/wrtc#readme"
+}
