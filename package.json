@@ -1,6 +1,6 @@
 {
   "name": "@h3r/wrtc",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "",
   "main": "wrtc.js",
   "scripts": {
