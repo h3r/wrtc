@@ -14,10 +14,10 @@ export default class WRTC extends Observable
         
         super();
         WRTC.instance = this;
-        if (util && util.supports.data) { /* OK to start a data connection. */ }
+        //if (util && util.supports.data) { /* OK to start a data connection. */ }
         //else { debugger; /* Browser will not support data connection. */ }
 
-        if (util && util.browser === 'Firefox') { /* OK to peer with Firefox peers. */ }
+        //if (util && util.browser === 'Firefox') { /* OK to peer with Firefox peers. */ }
         //else { debugger; /* Browser will not support peer with other peers. */ }
         
         return this;
