@@ -29,7 +29,7 @@
   },
   "dependencies": {
     "@h3r/cookies": "^1.0.1",
-    "@h3r/observable": "^1.0.2",
+    "@h3r/observable": "^1.0.4",
     "peerjs": "^1.3.2"
   }
 }
