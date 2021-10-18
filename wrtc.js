@@ -14,10 +14,10 @@ export default class WRTC extends Observable
         
         super();
         WRTC.instance = this;
-        if (util?.supports.data) { /* OK to start a data connection. */ }
+        if (util && util.supports.data) { /* OK to start a data connection. */ }
         //else { debugger; /* Browser will not support data connection. */ }
 
-        if (util?.browser === 'Firefox') { /* OK to peer with Firefox peers. */ }
+        if (util && util.browser === 'Firefox') { /* OK to peer with Firefox peers. */ }
         //else { debugger; /* Browser will not support peer with other peers. */ }
         
         return this;
@@ -32,21 +32,21 @@ export default class WRTC extends Observable
     }
 
     isServerConnected(){
-        const res = this.peer?.open ?? false;
+        const res = this.peer && this.peer.open;
         if(res && this.debug > 1) console.warn('Net is not connected');
         return res;
     }
 
     isPeerConnected(peerId){
-        const res = this.peers[peerId]?._open ?? false;
+        const res = this.peers && this.peers[peerId] && this.peers[peerId]._open;
         if(res && this.debug > 1) console.warn('Peer is not connected');
         return res;
     }
 
     async init(UUID = "WRTC", options = {}){
         this.peers = [];
-        this.debug = options.debug ?? 3;//0 none 1 errors 2 errors & warnings 3 all logs
-        this.metadata = { UUID, ...options.metadata??{} };
+        this.debug = options.debug || 3;//0 none 1 errors 2 errors & warnings 3 all logs
+        this.metadata = { UUID, ...options.metadata || {} };
         this.peer = await this.createPeer(cookies.get('jsnet_peer_id'), {...options});
         
         return this.peer;
@@ -138,8 +138,8 @@ export default class WRTC extends Observable
 
     //Emitted when the connection is established and ready-to-use.
     onOpen(peerId, conn){
-        if(conn?.metadata?.UUID !== this.metadata?.UUID)
-        return this.close(peerId);
+        if(conn.metadata && conn.metadata.UUID !== this.metadata.UUID)
+            return this.close(peerId);
         
         this.peers[peerId] = conn;
         this.emit("open", peerId);
