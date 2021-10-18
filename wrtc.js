@@ -55,7 +55,7 @@ export default class WRTC extends Observable
     async createPeer(peerId, options){
         return new Promise((resolve, reject) => {
 
-            if(this.peer?.open) return resolve(false); 
+            if(this.peer && this.peer.open) return resolve(false); 
             let success = (peerId)=>{
                 cookies.set('jsnet_peer_id',peerId,0);
 
@@ -81,7 +81,7 @@ export default class WRTC extends Observable
 
             let destroy = () => {
                 cookies.set('jsnet_peer_id',null,0);
-                this.peer?.destroy();
+                if(this.peer) this.peer.destroy();
                 this.peer = new Peer(undefined, {...options});
                 this.peer.on("open",    success);
                 this.peer.on("error",   destroy);
